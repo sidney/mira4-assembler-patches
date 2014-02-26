@@ -1,0 +1,77 @@
+                                                    Rheinfelden, Winter 2014
+
+MIRA version 4.x
+
+
+MIRA - The Genome and EST Sequence Assembly System
+
+
+This README covers aspects of the source package.
+
+License
+=======
+
+Since version 2.8.0, MIRA (and the therein contained version of EdIt) is
+licensed under the open source GPL v2 license. please consult the "COPYING"
+file for more information on the GPL.
+
+
+Building
+========
+
+Please consult the file "Definitive Guide to MIRA", chapter "Installation,"
+for more information on pre-requisites, available options and walkthrough for
+common systems. There's also a section on building documentation in the same
+file.
+
+
+Directory structure of the source package
+=========================================
+
+Top level (this level):
+- standard files from GNU autoconf and automake as well as README; INSTALL,
+  etc.
+- directory "src": the MIRA sources. Type "make" to make the binaries.
+- directory "doc": the MIRA documentation in DocBook format. Use "make docs"
+  to build the documentation in HTML and PDF format.
+- directory "distribution": type "make distrib" and a package is made that
+  contains binaries, documentation and some demos
+- directory "minidemo": a few demos for mira and miraEST. Please note that the
+  demos are not directly usable in this directory and that one should never
+  try to run mira or miraEST in that directory. The reason is that "make
+  distrib" will make a complete copy of this directory
+- directories "miratest" and "test": please disregard these directories, they
+  just contain a few toy test cases used in development of MIRA.
+
+For more information on the sub-directories, please consult the README files
+there (if present).
+
+
+Programming with MIRA
+=====================
+
+The overall code documentation is not good. While it is slowly brought up to
+speed, please have a look at the files in ./src/examples_programming. And then
+look at the public functions of the classes in the ./src/mira directory.
+
+
+Need help?
+==========
+Please consult the extensive online documentation which covers more or less
+all aspects of MIRA. If questions persist, please mail general questions to
+the MIRA talk mailing list:
+        mira_talk@freelists.org
+
+To report bugs or ask for new features, please use the new ticketing system at:
+   http://sourceforge.net/p/mira-assembler/tickets/
+This ensures that requests do not get lost.
+
+
+Help wanted
+===========
+Do you want to help improving MIRA? Please consult the HELP_WANTED file.
+
+
+Author:
+=======
+MIRA - Bastien Chevreux: bach@chevreux.org

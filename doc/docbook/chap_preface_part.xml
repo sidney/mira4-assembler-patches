@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.docbook.org/xml/4.5/docbookx.dtd">
+
+<preface><title>Preface</title>
+<blockquote>
+  <attribution>Solomon Short</attribution>
+  <para>
+    <emphasis><quote>How much intelligence does one need to sneak upon lettuce?
+    </quote></emphasis>
+  </para>
+</blockquote>
+<para>
+  This "book" is actually the result of an exercise in self-defense. It
+  contains texts from several years of help files, mails, postings, questions,
+  answers etc.pp concerning MIRA and assembly projects one can do with it.
+</para>
+<para>
+  I never really intended to push MIRA. It started out as a PhD thesis and I
+  subsequently continued development when I needed something to be done which
+  other programs couldn't do at the time. But MIRA has always been available
+  as binary on the Internet since 1999 ... and as Open Source since
+  2007. Somehow, MIRA seems to have caught the attention of more than just a
+  few specialised sequencing labs and over the years I've seen an ever growing
+  number of mails in my inbox and on the MIRA mailing list. Both from people
+  having been "since ever" in the sequencing business as well as from labs or
+  people just getting their feet wet in the area.
+</para>
+<para>
+  The help files -- and through them this book -- sort of reflect this
+  development. Most of the chapters<footnote><para>Avid readers of David
+  Gerrold will certainly recognise the quotes from his books at the beginning
+  of each chapter</para></footnote> contain both very specialised
+  topics as well as step-by-step walk-throughs intended to help people to get
+  their assembly projects going. Some parts of the documentation are written
+  in a decidedly non-scientific way. Please excuse, time for rewriting mails
+  somewhat lacking, some texts were re-used almost verbatim.
+</para>
+<para>
+  The last few years have seen tremendous change in the sequencing
+  technologies and MIRA 4 reflects that: core data structures and
+  routines had to be thrown overboard and replaced with faster and/or more
+  versatile versions suited for the broad range of technologies and use-cases
+  I am currently running MIRA with.
+</para>
+<para>
+  Nothing is perfect, and both MIRA and this documentation (even if it is
+  rather pompously called <emphasis>Definitive Guide</emphasis>) are far from
+  it. If you spot an error either in MIRA or this manual, feel free to report
+  it. Or, even better, correct it if you can. At least with the manual files
+  it should be easy: they're basically just some decorated text files.
+</para>
+<para>
+  I hope that MIRA will be as useful to you as it has been to me. Have a lot
+  of fun with it.
+</para>
+<para>
+  Rheinfelden, February 2014
+</para>
+<para>
+  Bastien Chevreux
+</para>
+</preface>

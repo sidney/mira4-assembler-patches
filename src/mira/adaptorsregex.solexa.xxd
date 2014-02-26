@@ -1,0 +1,15 @@
+# first a master regexp (with ">" as first character which will be cut away
+# from RE) which triggers checking of subsequent regexes
+# then one regex per line until next master RE (or eof)
+>GATCGGAAG
+GATCGGAAGAGCGGTT.*
+GATCGGAAGAGCGGT$
+GATCGGAAGAGCGG$
+GATCGGAAGAGCG$
+GATCGGAAGAGC$
+GATCGGAAGAG$
+GATCGGAAGA$
+GATCGGAAG$
+GATCGGAAGAGCGTCG.*
+GATCGGAAGAGCGTC$
+GATCGGAAGAGCGT$

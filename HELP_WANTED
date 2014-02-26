@@ -1,0 +1,34 @@
+There are three main areas where MIRA could need help: documentation,
+programming and resources. If you feel you can help, please contact
+bach@chevreux.org
+
+
+Documentation
+=============
+- writing beginner tutorials for assembling data (including preprocessing
+  steps with other programs like lucy, pregap4 etc) would be really, REALLY
+  welcome. Especially for the usage of third party scripts.
+- do you have a special use case for MIRA and would like to write a
+  walk-through? Please do, this would be *much* appreciated.
+
+
+
+Programming
+===========
+- a linear-space banded Smith-Waterman alignment routine that works without
+  runtime-penalty would come in handy. I already have an idea how to realise
+  this but no time. Tricky, but feasible.
+- testing compilation and running of MIRA on presently untested platforms
+  (see INSTALL for a list of platforms).
+- some helper scripts to automatically download, quickly reformat and then
+  assemble data from the NCBI SRA & trace archive or the ENSEMBL trace server
+  would be nice (perl or  Tcl preferred)
+- and of course: feedback in any form, be it ideas, bug reports, success
+  stories (or failures) etc.
+
+
+Resources:
+==========
+My trusted i940 system at home has 24 GiB RAM which sometimes is a bit
+... small. Anyone who wants to sponsor an Intel Core i7-3960X system with 64
+GiB RAM? Just kidding, I don't really need it atm ;-)

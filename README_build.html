@@ -1,0 +1,516 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Installing MIRA</title><link rel="stylesheet" type="text/css" href="doccss/miradocstyle.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="chapter" title="Installing MIRA"><div class="titlepage"><div><div><h2 class="title"><a name="chap_installation"></a>Installing MIRA</h2></div><div><div class="author"><h3 class="author"><span class="firstname">Bastien</span> <span class="surname">Chevreux</span></h3><code class="email">&lt;<a class="email" href="mailto:bach@chevreux.org">bach@chevreux.org</a>&gt;</code></div></div><div><p class="releaseinfo">MIRA Version 4.0</p></div><div><p class="copyright">Copyright © 2014 Bastien Chevreux</p></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#sect_install_wheretofetch">1. 
+      Where to fetch MIRA
+    </a></span></dt><dt><span class="sect1"><a href="#sect_install_precompiledbinary">2. 
+      Installing from a precompiled binary package
+    </a></span></dt><dt><span class="sect1"><a href="#sect_install_third_party_integration">3. 
+      Integration with third party programs (gap4, consed)
+    </a></span></dt><dt><span class="sect1"><a href="#sect_install_compiling">4. 
+      Compiling MIRA yourself
+    </a></span></dt><dd><dl><dt><span class="sect2"><a href="#sect_install_comp_prereq">4.1. 
+	Prerequisites
+      </a></span></dt><dt><span class="sect2"><a href="#sect_install_comp_comp">4.2. 
+	Compiling and installing
+      </a></span></dt><dt><span class="sect2"><a href="#sect_install_comp_conf">4.3. 
+	Configure switches for MIRA
+      </a></span></dt><dd><dl><dt><span class="sect3"><a href="#sect_install_comp_conf_boost">4.3.1. 
+	  BOOST configure switches for MIRA
+	</a></span></dt><dt><span class="sect3"><a href="#sect_install_comp_conf_mira">4.3.2. 
+	  MIRA specific configure switches
+	</a></span></dt></dl></dd></dl></dd><dt><span class="sect1"><a href="#sect_install_walkthroughs">5. 
+      Installation walkthroughs
+    </a></span></dt><dd><dl><dt><span class="sect2"><a href="#sect_install_walkthroughs_kubuntu">5.1. 
+	(K)Ubuntu 12.04
+      </a></span></dt><dt><span class="sect2"><a href="#sect_install_walkthroughs_opensuse">5.2. 
+	openSUSE 12.1
+      </a></span></dt><dt><span class="sect2"><a href="#sect_install_walkthroughs_fedora">5.3. 
+	Fedora 17
+      </a></span></dt><dt><span class="sect2"><a href="#sect_install_walkthroughs_allfromscratch">5.4. 
+	Compile everything from scratch
+      </a></span></dt><dt><span class="sect2"><a href="#sect_install_walkthroughs_dynamic">5.5. 
+	Dynamically linked MIRA
+      </a></span></dt></dl></dd><dt><span class="sect1"><a href="#sect_install_hintotherplatforms">6. 
+      Compilation hints for other platforms.
+    </a></span></dt><dd><dl><dt><span class="sect2"><a href="#sect_install_hintosx">6.1. 
+	Mac OS X
+      </a></span></dt><dt><span class="sect2"><a href="#sect_install_hintnetbsd5">6.2. 
+	NetBSD 5 (i386)
+      </a></span></dt></dl></dd></dl></div><div class="blockquote"><table border="0" width="100%" cellspacing="0" cellpadding="0" class="blockquote" summary="Block quote"><tr><td width="10%" valign="top"> </td><td width="80%" valign="top"><p>
+      <span class="emphasis"><em><span class="quote">&#8220;<span class="quote">A problem can be found to almost every solution.
+      </span>&#8221;</span></em></span>
+    </p></td><td width="10%" valign="top"> </td></tr><tr><td width="10%" valign="top"> </td><td colspan="2" align="right" valign="top">--<span class="attribution">Solomon Short</span></td></tr></table></div><div class="sect1" title="1.  Where to fetch MIRA"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sect_install_wheretofetch"></a>1. 
+      Where to fetch MIRA
+    </h2></div></div></div><p>
+      SourceForge: <a class="ulink" href="http://sourceforge.net/projects/mira-assembler/" target="_top">http://sourceforge.net/projects/mira-assembler/</a>
+    </p><p>
+      There you will normally find a couple of precompiled binaries -- usually
+      for Linux and Mac OSX -- or the source package for compiling yourself.
+    </p><p>
+      Precompiled binary packages are named in the following way:
+    </p><p>
+      <code class="filename">mira_<em class="replaceable"><code>miraversion</code></em>_<em class="replaceable"><code>OS-and-binarytype</code></em>.tar.bz2</code>
+    </p><p>
+      where
+    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+	  For <code class="filename"><em class="replaceable"><code>miraversion</code></em></code>, the
+	  stable versions of MIRA with the general public as audience usually
+	  have a version number in three parts, like
+	  <code class="filename">3.0.5</code>, sometimes also followed by some postfix
+	  like in <code class="filename">3.2.0rc1</code> to denote release candidate 1
+	  of the 3.2.0 version of MIRA. On very rare occasions, stable
+	  versions of MIRA can have four part like in, e.g.,
+	  <code class="filename">3.4.0.1</code>: these versions create identical
+	  binaries to their parent version (<code class="filename">3.4.0</code>) and
+	  just contains fixes to the source build machinery.
+	</p><p>
+	  The version string sometimes can have a different format:
+	  <code class="filename"><span class="emphasis"><em>sometext</em></span>-0-g<span class="emphasis"><em>somehexnumber</em></span></code>
+	  like in, e.g.,
+	  <code class="filename">ft_fastercontig-0-g4a27c91</code>. These versions of
+	  MIRA are snapshots from the development tree of MIRA and usually
+	  contain new functionality which may not be as well tested as the
+	  rest of MIRA, hence contains more checks and more debugging output
+	  to catch potential errors
+	</p></li><li class="listitem"><p>
+	  <code class="filename"><em class="replaceable"><code>OS-and-binarytype</code></em></code>
+	  finally defines for which operating system and which processor class
+	  the package is destined. E.g.,
+	  <code class="filename">linux-gnu_x86_64_static</code> contains static
+	  binaries for Linux running a 64 bit processor.
+	</p></li></ul></div><p>
+      Source packages are usually named
+    </p><p>
+      <code class="filename">mira-<em class="replaceable"><code>miraversion</code></em>.tar.bz2</code>
+    </p><p>
+      Examples for packages at SourceForge:
+    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><code class="filename">mira_3.0.5_prod_linux-gnu_x86_64_static.tar.bz2</code></li><li class="listitem"><code class="filename">mira_3.0.5_prod_linux-gnu_i686_32_static.tar.bz2</code></li><li class="listitem"><code class="filename">mira_3.0.5_prod_OSX_snowleopard_x86_64_static.tar.bz2</code></li><li class="listitem"><code class="filename">mira-3.0.5.tar.bz2</code></li></ul></div></div><div class="sect1" title="2.  Installing from a precompiled binary package"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sect_install_precompiledbinary"></a>2. 
+      Installing from a precompiled binary package
+    </h2></div></div></div><p>
+      Download the package, unpack it. Inside, there is -- beside other
+      directories -- a <code class="filename">bin</code>. Copy or move the files and
+      soft-links inside this directory to a directory in your $PATH variable.
+    </p><p>
+      Additional scripts for special purposes are in the
+      <code class="filename">scripts</code> directory. You might or might not want to
+      have them in your $PATH.
+    </p><p>
+      Scripts and programs for MIRA from other authors are in the
+      <code class="filename">3rdparty</code> directory. Here too, you may or may not
+      want to have (some of them) in your $PATH.
+    </p></div><div class="sect1" title="3.  Integration with third party programs (gap4, consed)"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sect_install_third_party_integration"></a>3. 
+      Integration with third party programs (gap4, consed)
+    </h2></div></div></div><p>
+      MIRA sets tags in the assemblies that can be read and interpreted by the
+      Staden <span class="command"><strong>gap4</strong></span> package or
+      <span class="command"><strong>consed</strong></span>. These tags are extremely useful to
+      efficiently find places of interest in an assembly (be it de-novo or
+      mapping), but both <span class="command"><strong>gap4</strong></span> and <span class="command"><strong>consed</strong></span>
+      need to be told about these tags.
+    </p><p>
+      Data files for a correct integration are delivered in the
+      <code class="filename">support</code> directory of the distribution. Please
+      consult the README in that directory for more information on how to
+      integrate this information in either of these packages.
+    </p></div><div class="sect1" title="4.  Compiling MIRA yourself"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sect_install_compiling"></a>4. 
+      Compiling MIRA yourself
+    </h2></div></div></div><div class="sect2" title="4.1.  Prerequisites"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_comp_prereq"></a>4.1. 
+	Prerequisites
+      </h3></div></div></div><p>
+	The MIRA 3.x series works with quite old systems, the upcoming 4.x
+	series will need a C++11 compatible tool chain, i.e., systems starting
+	from the later half of 2011 should be OK. The requisites for
+	<span class="emphasis"><em>compiling</em></span> MIRA are:
+      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+	    gcc &#8805; 4.6.2, with libstdc++6. You really want to use a simple
+	    installation package pre-configured for your system, but in case you
+	    want or have to install gcc yourself, please refer to <a class="ulink" href="http://gcc.gnu.org/" target="_top">http://gcc.gnu.org/</a> for more information on the GNU compiler
+	    collection.
+	  </p></li><li class="listitem"><p>
+	    BOOST library &#8805; 1.46. Lower versions might work, but
+	    untested. You would need to change the checking in the configure
+	    script for this to run through. You really want to use a simple
+	    installation package pre-configured for your system, but in case you
+	    want or have to install BOOST yourself, please refer to <a class="ulink" href="http://www.boost.org/" target="_top">http://www.boost.org/</a> for more information on the BOOST
+	    library.
+	  </p><div class="warning" title="Warning" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Warning"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="images/warning.png"></td><th align="left">Warning</th></tr><tr><td align="left" valign="top">
+	    Do NOT use a so called <span class="emphasis"><em>staged</em></span> BOOST library,
+	    only a fully installed library will work at the moment
+	  </td></tr></table></div></li><li class="listitem">
+	  zlib. Should your system not have zlib installed or available as
+	  simple installation package, please see <a class="ulink" href="http://www.zlib.net/" target="_top">http://www.zlib.net/</a> for more information regarding zlib.
+	</li><li class="listitem">
+	  GNU make. Should your system not have gmake installed or available
+	  as simple installation package, please see <a class="ulink" href="www.gnu.org/software/make/" target="_top">www.gnu.org/software/make/</a> for more information regarding
+	  GNU make.
+	</li><li class="listitem">
+	  GNU flex &#8805; 2.5.33. Should your system not have flex installed or
+	  available as simple installation package, please see <a class="ulink" href="http://flex.sourceforge.net/" target="_top">http://flex.sourceforge.net/</a> for more information regarding
+	  flex.
+	</li><li class="listitem">
+	  Expat library &#8805; 2.0.1. Should your system not have the Expat library and
+	  header files already installed or available as simple installation
+	  package, you will need to download and install a yourself. Please see
+	  <a class="ulink" href="http://www.libexpat.org/" target="_top">http://www.libexpat.org/</a> and <a class="ulink" href="http://sourceforge.net/projects/expat/" target="_top">http://sourceforge.net/projects/expat/</a> for information on how
+	  to do this.
+	</li><li class="listitem">
+	  xxd. A small utility from the <span class="command"><strong>vim</strong></span> package.
+	</li><li class="listitem"><p>
+	    TCmalloc library &#8805; 1.6. Not a prerequisite per se, but highly recommended:
+	    MIRA will also work without, but memory requirements may then be a
+	    <span class="emphasis"><em>lot</em></span> higher (40% and more).
+	  </p><p>
+	    TCmalloc is part of the Google perftools library, version 1.6 or
+	    higher, lower might work, but untested. Should your system not
+	    have the perftools library and header files already installed or
+	    available as simple installation package, you will need to
+	    download and install a yourself. Please see
+	    <a class="ulink" href="http://code.google.com/p/google-perftools/" target="_top">http://code.google.com/p/google-perftools/</a>.
+	  </p><p>
+	    Note that Google perftools itself needs libunwind:
+	    <a class="ulink" href="http://www.nongnu.org/libunwind/" target="_top">http://www.nongnu.org/libunwind/</a>
+	  </p></li></ul></div><p>
+	For <span class="emphasis"><em>building the documentation</em></span>, additional
+	prerequisites are from the DocBook tool chain:
+      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+	  xsltproc + docbook-xsl for HTML output
+	</li><li class="listitem">
+	  dblatex for PDF output
+	</li></ul></div></div><div class="sect2" title="4.2.  Compiling and installing"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_comp_comp"></a>4.2. 
+	Compiling and installing
+      </h3></div></div></div><p>
+	MIRA uses the GNU autoconf/automake tools, please read the section
+	"Basic Installation" of the <code class="filename">INSTALL</code> file in the
+	source package of MIRA for more generic information on how to invoke
+	them.
+      </p><p>
+	The short version: simply type
+      </p><pre class="screen">
+<code class="prompt">arcadia:/path/to/mira-4.0.0$</code> <strong class="userinput"><code>./configure</code></strong>
+<code class="prompt">arcadia:/path/to/mira-4.0.0$</code> <strong class="userinput"><code>make</code></strong>
+<code class="prompt">arcadia:/path/to/mira-4.0.0$</code> <strong class="userinput"><code>make install</code></strong></pre><p>
+	This should install the following programs:
+      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><span class="command"><strong>mira</strong></span></li><li class="listitem"><span class="command"><strong>miraconvert</strong></span></li><li class="listitem"><span class="command"><strong>mirabait</strong></span></li><li class="listitem"><span class="command"><strong>miramem</strong></span></li></ul></div><p>
+	Should the <code class="literal">./configure</code> step fail for some reason or
+	another, you should get a message telling you at which step this
+	happens and and either install missing packages or tell
+	<span class="command"><strong>configure</strong></span> where it should search the packages it
+	did not find, see also next section.
+      </p></div><div class="sect2" title="4.3.  Configure switches for MIRA"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_comp_conf"></a>4.3. 
+	Configure switches for MIRA
+      </h3></div></div></div><p>
+	MIRA understands all standard autoconf configure switches like <code class="literal">--prefix=</code>
+	etc. Please consult the INSTALL file in the MIRA top level directory
+	of the source package and also call <code class="literal">./configure
+	--help</code> to get a full list of currently supported switches.
+      </p><div class="sect3" title="4.3.1.  BOOST configure switches for MIRA"><div class="titlepage"><div><div><h4 class="title"><a name="sect_install_comp_conf_boost"></a>4.3.1. 
+	  BOOST configure switches for MIRA
+	</h4></div></div></div><p>
+	  BOOST is maybe the most tricky library to get right in case it does
+	  not come pre-configured for your system. The two main switches for
+	  helping to locate BOOST are
+	  probably <code class="literal">--with-boost=[ARG]</code>
+	  and <code class="literal">--with-boost-libdir=LIB_DIR</code>. Only if those
+	  two fail, try using the other <code class="literal">--with-boost-*=</code> switches
+	  you will see from the ./configure help text.
+	</p></div><div class="sect3" title="4.3.2.  MIRA specific configure switches"><div class="titlepage"><div><div><h4 class="title"><a name="sect_install_comp_conf_mira"></a>4.3.2. 
+	  MIRA specific configure switches
+	</h4></div></div></div><p>
+	  MIRA honours the following switches:
+	</p><div class="variablelist"><dl><dt><span class="term">
+	      --enable-64=yes/no
+	    </span></dt><dd><p>
+		MIRA should happily build as 32 bit executable on 32 bit
+		platforms and as 64 bit executable on 64 bit platforms. On 64
+		bit platforms, setting the switch to 'no' forces the compiler
+		to produce 32 bit executables (if possible)
+	      </p><div class="warning" title="Warning" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Warning"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="images/warning.png"></td><th align="left">Warning</th></tr><tr><td align="left" valign="top">
+		As of MIRA 3.9.0, support for 32 bit platforms is being
+		slowly phased out. While MIRA should compile and also run fine
+		on 32 bit platforms, I do not guarantee it anymore as I
+		haven't used 32 bit systems in the last 5 years.
+	      </td></tr></table></div></dd><dt><span class="term">
+	      --enable-warnings
+	    </span></dt><dd>
+	      Enables compiler warnings, useful only for developers, not for users.
+	    </dd><dt><span class="term">
+	      --enable-debug
+	    </span></dt><dd>
+	      Lets the MIRA binary contain C/C++ debug symbols.
+	    </dd><dt><span class="term">
+	      --enable-mirastatic
+	    </span></dt><dd>
+	      Builds static binaries which are easier to distribute. Some
+	      platforms (like OpenSolaris) might not like this and you will
+	      get an error from the linker.
+	    </dd><dt><span class="term">
+	      --enable-optimisations
+	    </span></dt><dd>
+	      Instructs the configure script to set optimisation switches for compiling
+	      (on by default). Switching optimisations off (warning, high impact on
+	      run-time) might be interesting only for, e.g, debugging with valgrind.
+	    </dd><dt><span class="term">
+	      --enable-publicquietmira
+	    </span></dt><dd>
+	      Some parts of MIRA can dump additional debug information during
+	      assembly, setting this switch to "no" performs this. Warning:
+	      MIRA will be a bit chatty, using this is not recommended for
+	      public usage.
+	    </dd><dt><span class="term">
+	      --enable-developmentversion
+	    </span></dt><dd>
+	      Using MIRA with enabled development mode may lead to extra
+	      output on stdout as well as some additional data in the results
+	      which should not appear in real world data
+	    </dd><dt><span class="term">
+	      --enable-boundtracking
+	    </span></dt><dd></dd><dt><span class="term">
+	      --enable-bugtracking
+	    </span></dt><dd>
+	      Both flags above compile in some basic checks into mira that
+	      look for sanity within some functions: Leaving this on "yes"
+	      (default) is encouraged, impact on run time is minimal
+	    </dd><dt><span class="term">
+	    </span></dt><dd></dd><dt><span class="term">
+	    </span></dt><dd></dd><dt><span class="term">
+	    </span></dt><dd></dd></dl></div></div></div></div><div class="sect1" title="5.  Installation walkthroughs"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sect_install_walkthroughs"></a>5. 
+      Installation walkthroughs
+    </h2></div></div></div><div class="sect2" title="5.1.  (K)Ubuntu 12.04"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_walkthroughs_kubuntu"></a>5.1. 
+	(K)Ubuntu 12.04
+      </h3></div></div></div><p>
+	You will need to install a couple of tools and libraries before
+	compiling MIRA. Here's the recipe:
+      </p><pre class="screen">
+<strong class="userinput"><code>sudo apt-get install make flex libgoogle-perftools-dev
+sudo apt-get install libboost-doc libboost.*1.48-dev libboost.*1.48.0</code></strong></pre><p>
+	Once this is done, you can unpack and compile MIRA. For a dynamically
+	linked version, use:
+      </p><pre class="screen">
+<strong class="userinput"><code>tar xvjf <em class="replaceable"><code>mira-4.0.0.tar.bz2</code></em>
+cd <em class="replaceable"><code>mira-4.0.0</code></em>
+./configure
+make &amp;&amp; make install</code></strong></pre><p>
+	For a statically linked version, just change the configure line from
+	above into
+      </p><pre class="screen">
+<strong class="userinput"><code>./configure <em class="replaceable"><code>--enable-mirastatic</code></em></code></strong></pre><p>
+	In case you also want to build documentation yourself, you will need
+	this in addition:
+      </p><pre class="screen"><strong class="userinput"><code>sudo apt-get install xsltproc docbook-xsl dblatex</code></strong></pre><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+	  People working on git checkouts of the MIRA source code will
+	  obviously need some more tools. Get them with this:
+	</p><pre class="screen"><strong class="userinput"><code>sudo apt-get install automake libtool xutils-dev</code></strong></pre></td></tr></table></div></div><div class="sect2" title="5.2.  openSUSE 12.1"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_walkthroughs_opensuse"></a>5.2. 
+	openSUSE 12.1
+      </h3></div></div></div><p>
+	You will need to install a couple of tools and libraries before
+	compiling MIRA. Here's the recipe:
+      </p><pre class="screen">
+<strong class="userinput"><code>sudo zypper install gcc-c++ boost-devel
+sudo zypper install flex libexpat-devel google-perftools-devel zlib-devel</code></strong></pre><p>
+	Once this is done, you can unpack and compile MIRA. For a dynamically
+	linked version, use:
+      </p><pre class="screen">
+<strong class="userinput"><code>tar xvjf <em class="replaceable"><code>mira-4.0.0.tar.bz2</code></em>
+cd <em class="replaceable"><code>mira-4.0.0</code></em>
+./configure
+make &amp;&amp; make install</code></strong></pre><p>
+	For a statically linked version you will need to compile and install
+	the Google perftools library yourself as the package delivered by
+	Fedora contains only dynamic libraries.
+      </p><p>
+	In case you also want to build documentation yourself, you will need
+	this in addition:
+      </p><pre class="screen"><strong class="userinput"><code>sudo zypper install docbook-xsl-stylesheets dblatex</code></strong></pre><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+	  People working on git checkouts of the MIRA source code will
+	  obviously need some more tools. Get them with this:
+	</p><pre class="screen"><strong class="userinput"><code>sudo zypper install automake libtool xutils-dev</code></strong></pre></td></tr></table></div></div><div class="sect2" title="5.3.  Fedora 17"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_walkthroughs_fedora"></a>5.3. 
+	Fedora 17
+      </h3></div></div></div><p>
+	You will need to install a couple of tools and libraries before
+	compiling MIRA. Here's the recipe:
+      </p><pre class="screen">
+<strong class="userinput"><code>sudo yum -y install gcc-c++ boost-devel
+sudo yum install flex expat-devel google-perftools-devel vim-common zlib-devel</code></strong></pre><p>
+	Once this is done, you can unpack and compile MIRA. For a dynamically
+	linked version, use:
+      </p><pre class="screen">
+<strong class="userinput"><code>tar xvjf <em class="replaceable"><code>mira-4.0.0.tar.bz2</code></em>
+cd <em class="replaceable"><code>mira-4.0.0</code></em>
+./configure
+make &amp;&amp; make install</code></strong></pre><p>
+	For a statically linked version you will need to compile and install
+	the Google perftools library yourself as the package delivered by
+	Fedora contains only dynamic libraries.
+      </p><p>
+	In case you also want to build documentation yourself, you will need
+	this in addition:
+      </p><pre class="screen"><strong class="userinput"><code>sudo yum -y install docbook-xsl dblatex</code></strong></pre><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+	  People working on git checkouts of the MIRA source code will
+	  obviously need some more tools. Get them with this:
+	</p><pre class="screen"><strong class="userinput"><code>sudo yum -y install automake libtool xorg-x1-util-devel</code></strong></pre></td></tr></table></div></div><div class="sect2" title="5.4.  Compile everything from scratch"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_walkthroughs_allfromscratch"></a>5.4. 
+	Compile everything from scratch
+      </h3></div></div></div><p>
+	This lets you build a self-contained static MIRA binary. The only
+	prerequisite here is that you have a working <span class="command"><strong>gcc</strong></span>
+	&#8805; 4.6.2. Please download all necessary files (expat, flex, etc.pp)
+	and then simply follow the script below. The only things that you will
+	want to change are the path used and, maybe, the name of some packages
+	in case they were bumped up a version or revision.
+      </p><p>
+	Contributed by Sven Klages.
+      </p><pre class="screen">
+## whatever path is appropriate
+<strong class="userinput"><code>cd <em class="replaceable"><code>/home/gls/SvenTemp/install</code></em></code></strong>
+
+## expat
+<strong class="userinput"><code>tar zxvf <em class="replaceable"><code>expat-2.0.1.tar.gz</code></em>
+cd <em class="replaceable"><code>expat-2.0.1</code></em>
+./configure <em class="replaceable"><code>--prefix=/home/gls/SvenTemp/expat</code></em>
+make &amp;&amp; make install</code></strong>
+
+## flex
+<strong class="userinput"><code>cd <em class="replaceable"><code>/home/gls/SvenTemp/install</code></em>
+tar zxvf <em class="replaceable"><code>flex-2.5.35.tar.gz</code></em>
+cd <em class="replaceable"><code>flex-2.5.35</code></em>
+./configure <em class="replaceable"><code>--prefix=/home/gls/SvenTemp/flex</code></em>
+make &amp;&amp; make install
+cd <em class="replaceable"><code>/home/gls/SvenTemp/flex/bin</code></em>
+ln -s flex flex++
+export PATH=<em class="replaceable"><code>/home/gls/SvenTemp/flex/bin</code></em>:$PATH</code></strong>
+
+## boost
+<strong class="userinput"><code>cd <em class="replaceable"><code>/home/gls/SvenTemp/install</code></em>
+tar zxvf <em class="replaceable"><code>boost_1_48_0.tar.gz</code></em>
+cd <em class="replaceable"><code>boost_1_48_0</code></em>
+./bootstrap.sh --prefix=<em class="replaceable"><code>/home/gls/SvenTemp/boost</code></em>
+./b2 install</code></strong>
+
+## libunwind and google-perftools
+<strong class="userinput"><code>cd <em class="replaceable"><code>/home/gls/SvenTemp/install</code></em>
+tar zxvf <em class="replaceable"><code>libunwind-0.99-beta.tar.gz</code></em>
+cd <em class="replaceable"><code>libunwind-0.99-beta</code></em>
+./configure --prefix=<em class="replaceable"><code>/home/gls/SvenTemp/libunwind</code></em>
+make &amp;&amp; make install
+
+cd <em class="replaceable"><code>/home/gls/SvenTemp/install</code></em>
+tar zxvf <em class="replaceable"><code>google-perftools-1.9.1.tar.gz</code></em>
+cd <em class="replaceable"><code>google-perftools-1.9.1</code></em>
+export LDFLAGS="-L<em class="replaceable"><code>/home/gls/SvenTemp/libunwind/lib</code></em>"
+export CPPFLAGS="-I<em class="replaceable"><code>/home/gls/SvenTemp/libunwind/include</code></em>"
+./configure --prefix=<em class="replaceable"><code>/home/gls/SvenTemp/google-perftools</code></em>
+make &amp;&amp; make install</code></strong>
+
+## mira itself
+<strong class="userinput"><code>export CXXFLAGS="-I<em class="replaceable"><code>/home/gls/SvenTemp/flex/include</code></em>"
+
+cd <em class="replaceable"><code>/home/gls/SvenTemp/install</code></em>
+tar zxvf <em class="replaceable"><code>mira-3.4.0.1.tar.gz</code></em>
+cd <em class="replaceable"><code>mira-3.4.0.1</code></em>
+./configure --prefix=<em class="replaceable"><code>/home/gls/SvenTemp/mira</code></em> \
+--with-boost=<em class="replaceable"><code>/home/gls/SvenTemp/boost</code></em> \
+--with-expat=<em class="replaceable"><code>/home/gls/SvenTemp/expat</code></em> \
+--with-tcmalloc-dir=<em class="replaceable"><code>/home/gls/SvenTemp/google-perftools/lib</code></em> \
+--enable-mirastatic
+make &amp;&amp; make install</code></strong></pre></div><div class="sect2" title="5.5.  Dynamically linked MIRA"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_walkthroughs_dynamic"></a>5.5. 
+	Dynamically linked MIRA
+      </h3></div></div></div><p>
+	In case you do not want a static binary of MIRA, but a dynamically
+	linked version, the following script by Robert Bruccoleri will give
+	you an idea on how to do this.
+      </p><p>
+	Note that he, having root rights, puts all additional software in
+	/usr/local, and in particular, he keeps updated versions of Boost and
+	Flex there.
+      </p><pre class="screen">
+#!/bin/sh -x
+
+make distclean
+oze=`find . -name "*.o" -print`
+if [[ -n "$oze" ]]
+then
+   echo "Not clean."
+   exit 1
+
+fi
+
+export prefix=${BUILD_PREFIX:-/usr/local}
+export LDFLAGS="-Wl,-rpath,$prefix/lib"
+
+./configure --prefix=$prefix \
+           --enable-debug=yes \
+           --enable-mirastatic=no \
+           --with-boost-libdir=$prefix/lib \
+           --enable-optimisations \
+           --enable-boundtracking=yes \
+           --enable-bugtracking=yes \
+           --enable-extendedbugtracking=no \
+           --with-tcmalloc=yes \
+           --with-tcmalloc-dir=$prefix/lib
+make
+make install</pre></div></div><div class="sect1" title="6.  Compilation hints for other platforms."><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sect_install_hintotherplatforms"></a>6. 
+      Compilation hints for other platforms.
+    </h2></div></div></div><div class="sect2" title="6.1.  Mac OS X"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_hintosx"></a>6.1. 
+	Mac OS X
+      </h3></div></div></div><p>
+	This has been tested on OSX 10.6.4. You will need XCode (from Apple)
+	and some packages from MacPorts.
+      </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">Download and install a current XCode</li><li class="listitem">Download and compile a current GCC (&#8805; 4.8.2). Do NOT use a
+	GCC from MacPorts, it lacks a vitally important library
+	(<code class="filename">libstdc++.a</code>)</li><li class="listitem">Download, compile with GCC and install a current BOOST
+	library</li><li class="listitem">Download, compile with GCC and install all libraries MIRA
+	needs (flex, etc.pp). Follow the directions given in <a class="xref" href="#sect_install_walkthroughs_allfromscratch" title="5.4.  Compile everything from scratch">Section 5.4: &#8220;
+	Compile everything from scratch
+      &#8221;</a> and <a class="xref" href="#sect_install_walkthroughs_allfromscratch" title="5.4.  Compile everything from scratch">Section 5.4, &#8220;
+	Compile everything from scratch
+      &#8221;</a></li><li class="listitem">Download the MIRA source package and unpack it</li><li class="listitem"><p>
+	    In the unpacked MIRA directory, create a directory called
+	    <code class="filename">OSXstatlibs</code>. Into this directory, you need to
+	    softlink all needed static libraries from GCC, BOOST, flex,
+	    etc.pp.
+	  </p><p>
+	    E.g., I have GCC installed in
+	    <code class="filename">/opt/localwgcc48/</code> and therefore I need to use
+	    the following to link GCC static libraries:
+	  </p><pre class="screen">
+<code class="prompt">$</code> <strong class="userinput"><code>ln -s <em class="replaceable"><code>/opt/localwgcc48/lib/*a</code></em> .</code></strong></pre><p>
+	    I have all the other libraries (BOOST, flex, etc.pp) installed in
+	    <code class="filename">/opt/biosw/</code>, therefore I also need to link
+	    these libraries:
+	  </p><pre class="screen">
+<code class="prompt">$</code> <strong class="userinput"><code>ln -s <em class="replaceable"><code>/opt/biosw/lib/*a</code></em> .</code></strong></pre></li><li class="listitem"><p>
+	    Run <code class="literal">./configure --enable-mirastatic ...</code> where
+	    "..." stands for additional configure parameters needed and then
+	    run <code class="literal">make</code>.
+	  </p><p>
+	    Oh, and then pray.
+	  </p></li></ol></div><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+	As of now (Feb. 2014), if you are on OSX 10.9 (Mavericks) and are
+	using GCC &#8804; 4.8.2, the steps described above (including the prayer)
+	may not be enough. If an error occurs at the linking stage very late in
+	the MIRA building process, you need to patch a system file as described
+	in <a class="ulink" href="http://trac.macports.org/ticket/41033" target="_top">http://trac.macports.org/ticket/41033</a></td></tr></table></div><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+	A checkout from git needs some packages from MacPorts:
+	<pre class="screen"><code class="prompt">$</code> <strong class="userinput"><code>port install autoconf automake libtool</code></strong></pre></td></tr></table></div><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+	  Building documentation needs the packages 'libxslt' and 'dblatex' from MacPorts.
+	</p><pre class="screen"><code class="prompt">$</code> <strong class="userinput"><code>port install dblatex libxslt</code></strong></pre><p>
+	  (Feb 2014) The above may fail while installing the one or other
+	  dependency (for me it was while installing 'urw-fonts'). If that is
+	  the case, repeat a couple of times and normally it should work.
+	</p></td></tr></table></div></div><div class="sect2" title="6.2.  NetBSD 5 (i386)"><div class="titlepage"><div><div><h3 class="title"><a name="sect_install_hintnetbsd5"></a>6.2. 
+	NetBSD 5 (i386)
+      </h3></div></div></div><p>
+	Contributed by Thomas Vaughan
+      </p><p>
+	The system flex <span class="emphasis"><em>(/usr/bin/flex)</em></span> is too old, but the
+	devel/flex package from a recent pkgsrc works fine. BSD make doesn't
+	like one of the lines in <span class="emphasis"><em>src/progs/Makefile</em></span>, so use GNU make instead
+	(available from <span class="emphasis"><em>pkgsrc</em></span> as <span class="emphasis"><em>devel/gmake</em></span>). Other relevant pkgsrc packages:
+	<span class="emphasis"><em>devel/boost-libs</em></span>, <span class="emphasis"><em>devel/boost-headers</em></span>
+	and <span class="emphasis"><em>textproc/expat</em></span>. The configure script has to
+	be told about these pkgsrc prerequisites (they are usually rooted
+	at <span class="emphasis"><em>/usr/pkg</em></span> but other locations are possible):
+      </p><pre class="screen"><strong class="userinput"><code>FLEX=/usr/pkg/bin/flex ./configure --with-expat=/usr/pkg --with-boost=/usr/pkg</code></strong></pre><p>
+	If attempting to build a pkgsrc package of MIRA, note that the LDFLAGS
+	passed by the pkgsrc mk files don't remove the need for
+	the <span class="emphasis"><em>--with-boost</em></span> option.  The configure script
+	complains about flex being too old, but this is harmless because it
+	honours the $FLEX variable when writing out makefiles.
+      </p></div></div></div></body></html>
